@@ -26,6 +26,11 @@ public class Login {
 
         Assert.assertEquals(Message, "Login Successfully");
 
+        given().spec(req).formParam("productName", "qwerty").formParam("productAddedBy", UserID).formParam("productCategory", "fashion")
+                .formParam("productSubCategory", "shirts").formParam("productPrice", "11500").formParam("productDescription","Addias Originals")
+                .formParam("productFor", "women").formParam("productImage","").header("Authorization",LoginToken)
+                .when().post("api/ecom/product/add-product")
+                .then().assertThat().statusCode(200);
 
 
     }
